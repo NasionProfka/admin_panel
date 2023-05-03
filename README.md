@@ -1,33 +1,51 @@
 # Symfony Project
 
-This is a Symfony project that allows you to manage users and groups. It provides functionality for creating, editing, and deleting users and groups, as well as assigning users to groups and removing them from groups.
+This Symfony project is a simple application that manages users and groups. It allows you to create, edit, and delete users and groups, as well as assign users to multiple groups and view the groups associated with each user.
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Domain Model](#domain-model)
+- [Database Model](#database-model)
+
+## Installation
+
+To run this Symfony project locally, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Ensure you have PHP and Composer installed.
+3. Run `composer install` in the project root directory to install the project dependencies.
+4. Configure your database connection in the `.env` file.
+5. Run `php bin/console doctrine:database:create` to create the database.
+6. Run `php bin/console doctrine:migrations:migrate` to apply the database migrations.
+7. Start the local development server by running `symfony server:start`.
+8. Access the application in your browser at `http://localhost:8000`.
 
 ## Domain Model
 
-The domain model for this project consists of two main entities: User and Group. Users can be associated with multiple groups, and groups can have multiple users. Here is a simplified representation of the domain model:
+The domain model for this project includes two main entities: User and Group. Users can belong to multiple groups, and groups can have multiple users. The many-to-many relationship between User and Group is represented as follows:
 
-                    +------------+
-                    |   User     |
-                    +------------+
-                    | - id       |
-                    | - name     |
-                    | - groups   |
-                    +------------+
-                         |        
-                         |
-                         |  N       
-                         |
-                    +------------+
-                    |   Group    |
-                    +------------+
-                    | - id       |
-                    | - name     |
-                    | - users    |
-                    +------------+
+             +------------+
+             |   User     |
+             +------------+
+             | - id       |
+             | - name     |
+             | - groups   |
+             +------------+
+                  |
+                  |  N
+                  |
+             +------------+
+             |   Group    |
+             +------------+
+             | - id       |
+             | - name     |
+             | - users    |
+             +------------+
 
 ## Database Model
 
-The database model for this project is implemented using Doctrine ORM, which maps the entities to database tables. The database schema includes two tables: `user` and `group`. Here is a brief explanation of the tables and their columns:
+The database model represents the many-to-many relationship between User and Group using a junction table. Here's an explanation of the tables and their columns:
 
 - `user` table:
     - `id`: Primary key column for the user.
@@ -37,30 +55,16 @@ The database model for this project is implemented using Doctrine ORM, which map
     - `id`: Primary key column for the group.
     - `name`: Column for the name of the group.
 
-- `user_group` table (join table):
-    - This table is automatically created by Doctrine to establish a many-to-many relationship between users and groups.
+- `user_group` table (junction table):
+    - This table is automatically created by Doctrine to establish the many-to-many relationship between users and groups.
     - It has two columns: `user_id` and `group_id`, which are foreign keys referencing the `id` columns of the `user` and `group` tables respectively.
 
-## Installation and Setup
+The junction table `user_group` allows you to associate users with groups and vice versa, enabling the many-to-many relationship between User and Group.
 
-1. Clone the repository.
-2. Install the project dependencies by running `composer install`.
-3. Configure your database connection in the `.env` file.
-4. Create the database by running `php bin/console doctrine:database:create`.
-5. Run the database migrations to create the necessary tables by running `php bin/console doctrine:migrations:migrate`.
-6. Start the development server by running `symfony server:start`.
-7. Access the application in your browser at `http://localhost:8000`.
+Feel free to explore the project and use it as a starting point for your own Symfony applications!
 
-## Usage
+---
 
-- Navigate to the user management page to create, edit, and delete users.
-- Navigate to the group management page to create, edit, and delete groups.
-- Users can be assigned to groups or removed from groups using the provided functionality.
+Update the README file with any additional information specific to your project, such as usage instructions, features, or deployment details.
 
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
-## License
-
-This project is not licensed (:.
+Remember to keep the README file updated as the project evolves.
