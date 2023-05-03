@@ -1,0 +1,9 @@
+app_api_groups_create:
+    path: /api/groups/create
+    controller: 'App\Controller\Api\ApiGroupsController::create'
+    methods: POST
+
+app_api_groups_delete:
+    path: /api/groups/delete/{id}
+    controller: 'App\Controller\Api\ApiGroupsController::delete'
+    methods: DELETE

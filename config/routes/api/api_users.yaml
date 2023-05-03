@@ -1,0 +1,19 @@
+app_api_users_create:
+    path: /api/users/create
+    controller: 'App\Controller\Api\ApiUsersController::create'
+    methods: POST
+
+app_api_users_delete:
+    path: /api/users/delete/{id}
+    controller: 'App\Controller\Api\ApiUsersController::delete'
+    methods: DELETE
+
+app_api_user_add_to_group:
+    path: /api/users/add-to-group/{userId}/{groupId}
+    controller: 'App\Controller\Api\ApiUsersController::addToGroup'
+    methods: POST
+
+app_api_user_remove_from_group:
+    path: /api/users/remove-from-group/{userId}/{groupId}
+    controller: 'App\Controller\Api\ApiUsersController::removeFromGroup'
+    methods: POST

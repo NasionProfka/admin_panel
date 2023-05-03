@@ -1,0 +1,17 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+api_groups:
+    resource: ../config/routes/api/api_groups.yaml
+
+api_users:
+    resource: ../config/routes/api/api_users.yaml
+
+groups:
+    resource: ../config/routes/web/groups.yaml
+
+users:
+    resource: ../config/routes/web/users.yaml

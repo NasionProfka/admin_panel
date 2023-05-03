@@ -1,0 +1,32 @@
+{% extends "./base.html.twig" %}
+
+{% block body %}
+    <div class="w-4/5 m-auto text-center">
+        <div class="py-12 border-b border-gray-200">
+            <h1 class="text-6xl pt-12 pb-8">
+                {{ groups|length }} Groups
+            </h1>
+        </div>
+    </div>
+
+    <div class="mx-auto w-4/5 my-8">
+        <a 
+            href="/groups/create" 
+            class="uppercase border border-gray-500 text-lg py-4 px-6 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+            Create New group
+        </a>
+    </div>
+    <div class="md:grid lg:grid-cols-3 gap-20 w-4/5 mx-auto py-15 ">
+        <!-- Review Item -->
+        {% for group in groups %}
+            <div class="text-center pt-8 pb-4">
+                <h2 class="text-gray-700 font-bold text-3xl py-2">
+                    {{ group.name }}
+                </h2>
+                <a href="/groups/{{ group.id }}" class="uppercase border border-gray-500 text-gray-600 text-lg py-2 px-12 rounded transition transition-all hover:bg-gray-800 hover:text-white">
+                    More...
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

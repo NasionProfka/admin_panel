@@ -1,0 +1,24 @@
+app_groups_index:
+    path: /groups
+    controller: 'App\Controller\Web\GroupsController::index'
+    methods: GET
+
+app_groups_create:
+    path: /groups/create
+    controller: 'App\Controller\Web\GroupsController::create'
+    methods: [GET, POST]
+
+app_groups_edit:
+    path: /groups/edit/{id}
+    controller: 'App\Controller\Web\GroupsController::edit'
+    methods: [GET, POST]
+
+app_groups_delete:
+    path: /groups/delete/{id}
+    controller: 'App\Controller\Web\GroupsController::delete'
+    methods: GET
+
+app_groups_show:
+    path: /groups/{id}
+    controller: 'App\Controller\Web\GroupsController::show'
+    methods: GET
